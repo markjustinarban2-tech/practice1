@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>J2 Nexus Technologies</title>
+  <title>Contact Us - J2 Nexus Technologies</title>
   <style>
     /* ===== Global Reset ===== */
     * {
@@ -83,103 +83,77 @@
       font-weight: 500;
     }
 
-    /* ===== Hero Section ===== */
-    .hero {
-      margin-top: 80px;
-      background: url('banner.jpg') center/cover no-repeat;
-      color: #130202;
-      text-align: center;
-      padding: 120px 20px;
-      position: relative;
+    /* ===== Contact Section ===== */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 20px 40px;
     }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      background: #0055a5;
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #003366;
-      transform: scale(1.05);
-    }
-
-    /* ===== Products Section ===== */
-    .products {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .products h2 {
-      font-size: 2rem;
-      color: #003366;
-      margin-bottom: 40px;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      justify-items: center;
-    }
-
-    .product-card {
+    .contact-container {
       background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: 0.3s;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 280px;
+      max-width: 500px;
     }
 
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .product-info {
-      padding: 15px;
-    }
-
-    .product-info h3 {
-      font-size: 1.2rem;
+    .contact-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
       color: #003366;
-      margin-bottom: 10px;
     }
 
-    .product-info p {
-      font-size: 0.9rem;
-      color: #555;
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
       margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      resize: none;
     }
 
-    .product-info .btn {
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background: #003366;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
       background: #0055a5;
     }
 
-    .product-info .btn:hover {
-      background: #003366;
+    .contact-info {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .contact-info a {
+      color: #003366;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
     }
 
     /* ===== Footer ===== */
@@ -192,7 +166,7 @@
       margin-top: auto;
     }
 
-    /* ===== Search ===== */
+    /* ===== Search Styles ===== */
     #searchContainer input {
       padding: 5px 10px;
       border-radius: 20px;
@@ -211,7 +185,6 @@
     }
 
     @media (max-width:768px) {
-      .hero h1 { font-size: 2rem; }
       nav ul { gap: 15px; }
     }
   </style>
@@ -222,27 +195,25 @@
   <header>
     <div class="container header-container">
       <div class="logo">
-        <img src="pic/logo.jpg.png" alt="J2 Nexus Logo" />
+        <img src="logo.jpg.png" alt="J2 Nexus Logo" />
         <span>J2 Nexus Technologies</span>
       </div>
       <nav>
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="product.html">Products</a></li>
           <li><a href="explore.html">Explore</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="contact.html" class="active">Contact Us</a></li>
         </ul>
       </nav>
       <div class="login">
-        <!-- Search Icon -->
         <div id="searchIcon" style="cursor:pointer; font-size:1.3rem;">🔍</div>
         <div id="searchContainer" style="display:none; align-items:center; gap:5px;">
           <input type="text" id="searchInput" placeholder="Search products..." />
           <button id="searchBtn">Search</button>
         </div>
 
-        <!-- Cart -->
         <div class="cart" onclick="window.location.href='cart.html'" 
              style="position:relative; cursor:pointer; font-size:1.3rem;">
           🛒
@@ -254,45 +225,29 @@
     </div>
   </header>
 
-  <!-- ===== Hero Section ===== -->
-  <section class="hero">
-    <h1>Welcome to J2 Nexus Technologies</h1>
-    <p>Your trusted source for tech innovation and quality products.</p>
-    <a href="product.html" class="btn">Shop Now</a>
-  </section>
+  <!-- ===== Contact Form Section ===== -->
+  <main>
+    <div class="contact-container">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
 
-  <!-- ===== Featured Products ===== -->
-  <section class="products">
-    <h2>Featured Products</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="pic/headphone.jpg.jpg" alt="Product 1" />
-        <div class="product-info">
-          <h3>Wireless Headphones</h3>
-          <p>Crystal-clear sound and long battery life.</p>
-          <button class="btn add-to-cart" data-name="Wireless Headphones">Add to Cart</button>
-        </div>
-      </div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
 
-      <div class="product-card">
-        <img src="pic/smartwatch.jpg.webp" alt="Product 2" />
-        <div class="product-info">
-          <h3>Smartwatch Pro</h3>
-          <p>Track fitness, health, and notifications with style.</p>
-          <button class="btn add-to-cart" data-name="Smartwatch Pro">Add to Cart</button>
-        </div>
-      </div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
 
-      <div class="product-card">
-        <img src="pic/bluetooth.jpg" alt="Product 3" />
-        <div class="product-info">
-          <h3>Bluetooth Speaker</h3>
-          <p>Powerful sound for both indoor and outdoor fun.</p>
-          <button class="btn add-to-cart" data-name="Bluetooth Speaker">Add to Cart</button>
-        </div>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div class="contact-info">
+        <p>Email us: <a href="mailto:markjustinarban2@example.com">markjustinarban2@example.com</a></p>
+        <p>Call us: +69 951 067 2001</p>
       </div>
     </div>
-  </section>
+  </main>
 
   <!-- ===== Footer ===== -->
   <footer>
@@ -313,7 +268,6 @@
   appId: "1:751925328045:web:6fd77bf003197170916e24",
   measurementId: "G-79ND35V0CS"
 };
-
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
@@ -324,16 +278,6 @@
     }
     loadCartCount();
 
-    // Add to Cart
-    document.querySelectorAll('.add-to-cart').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const name = btn.dataset.name;
-        await addDoc(collection(db, "cart"), { name, timestamp: new Date() });
-        alert(`${name} added to cart!`);
-        loadCartCount();
-      });
-    });
-
     // Search toggle
     const searchIcon = document.getElementById('searchIcon');
     const searchContainer = document.getElementById('searchContainer');
@@ -341,9 +285,27 @@
       searchContainer.style.display = searchContainer.style.display==='flex'?'none':'flex';
       if(searchContainer.style.display==='flex') document.getElementById('searchInput').focus();
     });
+
     document.getElementById('searchBtn').addEventListener('click', () => {
       const query = document.getElementById('searchInput').value.trim();
       if(query) window.location.href=`product.html?search=${encodeURIComponent(query)}`;
+    });
+
+    // Contact form submission
+    document.getElementById("contactForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      try {
+        await addDoc(collection(db, "contacts"), { name, email, message, timestamp: new Date() });
+        alert("✅ Message sent successfully!");
+        e.target.reset();
+      } catch (error) {
+        console.error(error);
+        alert("⚠️ Failed to send message.");
+      }
     });
   </script>
 </body>

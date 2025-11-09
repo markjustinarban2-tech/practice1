@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart - J2 Nexus Technologies</title>
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; background:#f4f4f4; margin:0; }
+header { background:#003366; color:#fff; padding:15px 0; }
+.container { width:90%; max-width:1200px; margin:auto; display:flex; justify-content:space-between; align-items:center; }
+h1 { text-align:center; padding:100px 0 20px; color:#003366; }
+.cart-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:0 20px 50px; }
+.cart-card { background:#fff; padding:15px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); text-align:center; }
+.cart-card img { width:100%; height:150px; object-fit:cover; margin-bottom:10px; }
+.cart-card h3 { color:#003366; margin-bottom:5px; }
+.cart-card p { color:#555; margin-bottom:10px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div>🛒 J2 Nexus Cart</div>
+    <a href="index.html" style="color:#fff;">Home</a>
+  </div>
+</header>
+
+<h1>Your Cart Items</h1>
+<div class="cart-grid" id="cartItems"></div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFPZliUDalJT7jEfCNoEOYU4J01itGS7s",
+      authDomain: "practice1-81aa6.firebaseapp.com",
+      projectId: "practice1-81aa6",
+      storageBucket: "practice1-81aa6.firebasestorage.app",
+      messagingSenderId: "751925328045",
+      appId: "1:751925328045:web:6fd77bf003197170916e24",
+      measurementId: "G-79ND35V0CS"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    
+    async function loadCart() {
+      const cartGrid = document.getElementById('cartItems');
+      cartGrid.innerHTML = ''; 
+    
+      const snapshot = await getDocs(collection(db, "cart"));
+    
+      if(snapshot.empty){
+        cartGrid.innerHTML = "<p style='text-align:center; color:#555;'>Your cart is empty.</p>";
+        return;
+      }
+    
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        cartGrid.innerHTML += `
+          <div class="cart-card">
+            <img src="${data.image}" alt="${data.name}">
+            <h3>${data.name}</h3>
+            <p>Price: ₱${data.price}</p>
+          </div>
+        `;
+      });
+    }
+    
+    loadCart();
+    </script>
+    
+</body>
+</html>
