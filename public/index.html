@@ -304,6 +304,17 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+const auth = getAuth();
+let userLoggedIn = false;
+
+// Check if user is logged in
+onAuthStateChanged(auth, (user) => {
+    userLoggedIn = !!user;
+});
+
+
     const firebaseConfig = {
   apiKey: "AIzaSyAFPZliUDalJT7jEfCNoEOYU4J01itGS7s",
   authDomain: "practice1-81aa6.firebaseapp.com",
@@ -326,13 +337,18 @@
 
     // Add to Cart
     document.querySelectorAll('.add-to-cart').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const name = btn.dataset.name;
-        await addDoc(collection(db, "cart"), { name, timestamp: new Date() });
-        alert(`${name} added to cart!`);
-        loadCartCount();
-      });
-    });
+  btn.addEventListener('click', async () => {
+    if (!userLoggedIn) {
+      alert("⚠️ You need to sign in first!");
+      window.location.href = 'login.html';
+      return;
+    }
+    const name = btn.dataset.name;
+    await addDoc(collection(db, "cart"), { name, timestamp: new Date() });
+    alert(`${name} added to cart!`);
+    loadCartCount();
+  });
+});
 
     // Search toggle
     const searchIcon = document.getElementById('searchIcon');

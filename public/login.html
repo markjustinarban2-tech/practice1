@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - J2 Nexus Technologies</title>
+  <style>
+    /* ===== Global Reset ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background: #f4f4f4; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ===== Header ===== */
+    header { background-color: #003366; color: #fff; width: 100%; position: fixed; top: 0; left: 0; z-index: 1000; }
+    .container { width: 90%; max-width: 1200px; margin: auto; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo img { height: 40px; }
+    nav ul { list-style: none; display: flex; gap: 25px; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: 500; }
+    nav ul li a.active, nav ul li a:hover { border-bottom: 2px solid #fff; }
+    
+    /* ===== Login Form ===== */
+    main { flex: 1; display: flex; justify-content: center; align-items: center; padding: 120px 20px 40px; }
+    .login-container { background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+    .login-container h2 { text-align: center; margin-bottom: 20px; color: #003366; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+    input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+    button { width: 100%; padding: 12px; border: none; border-radius: 5px; background: #003366; color: #fff; font-size: 16px; cursor: pointer; }
+    button:hover { background: #0055a5; }
+    .login-container p { text-align: center; font-size: 14px; margin-top: 10px; }
+    .login-container a { color: #003366; text-decoration: none; }
+    .login-container a:hover { text-decoration: underline; }
+
+    /* ===== Footer ===== */
+    footer { background-color: #003366; color: #fff; text-align: center; padding: 15px 0; font-size: 14px; margin-top: auto; }
+
+    @media (max-width:768px) { nav ul { gap: 15px; } }
+  </style>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="pic/logo.jpg.png" alt="J2 Nexus Logo" />
+        <span>J2 Nexus Technologies</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="product.html">Products</a></li>
+          <li><a href="explore.html">Explore</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Login Form ===== -->
+  <main>
+    <div class="login-container">
+      <h2>Sign In</h2>
+      <form id="loginForm">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Your Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>© 2025 J2 Nexus Technologies. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== Firebase & Scripts ===== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFPZliUDalJT7jEfCNoEOYU4J01itGS7s",
+      authDomain: "practice1-81aa6.firebaseapp.com",
+      projectId: "practice1-81aa6",
+      storageBucket: "practice1-81aa6.firebasestorage.app",
+      messagingSenderId: "751925328045",
+      appId: "1:751925328045:web:6fd77bf003197170916e24",
+      measurementId: "G-79ND35V0CS"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    // Redirect if already logged in
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        window.location.href = 'index.html';
+      }
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("✅ Logged in successfully!");
+        window.location.href = 'index.html';
+      } catch (error) {
+        console.error(error);
+        alert("⚠️ Login failed: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
