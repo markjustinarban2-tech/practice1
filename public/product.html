@@ -322,7 +322,7 @@
         </div>
 
         <div class="product-card">
-          <img src="pic/phone.png" alt="Fast Charger">
+          <img src="pic/smartwatch.jpg.webp" alt="Fast Charger">
           <div class="product-info">
             <h3>SmartPhone</h3>
             <p>versatile portable devices that offer wireless communication, internet access, high-resolution cameras</p>
@@ -343,16 +343,6 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-const auth = getAuth();
-let userLoggedIn = false;
-
-// Check if user is logged in
-onAuthStateChanged(auth, (user) => {
-    userLoggedIn = !!user;
-});
-
 
     const firebaseConfig = {
       apiKey: "AIzaSyAFPZliUDalJT7jEfCNoEOYU4J01itGS7s",
@@ -374,19 +364,13 @@ onAuthStateChanged(auth, (user) => {
     loadCartCount();
 
     document.querySelectorAll('.add-to-cart').forEach(btn => {
-  btn.addEventListener('click', async () => {
-    if (!userLoggedIn) {
-      alert("⚠️ You need to sign in first!");
-      window.location.href = 'login.html';
-      return;
-    }
-    const name = btn.dataset.name;
-    await addDoc(collection(db, "cart"), { name, timestamp: new Date() });
-    alert(`${name} added to cart!`);
-    loadCartCount();
-  });
-});
-
+      btn.addEventListener('click', async () => {
+        const name = btn.dataset.name;
+        await addDoc(collection(db, "cart"), { name, timestamp: new Date() });
+        alert(`${name} added to cart!`);
+        loadCartCount();
+      });
+    });
 
     const searchIcon = document.getElementById('searchIcon');
     const searchContainer = document.getElementById('searchContainer');
