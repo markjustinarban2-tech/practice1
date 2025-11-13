@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - J2 Nexus Technologies</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #003366;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      border-bottom: 2px solid #fff;
+    }
+
+    .about-section {
+      padding: 120px 20px 60px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-section h1 {
+      color: #003366;
+      margin-bottom: 20px;
+      font-size: 2.2rem;
+    }
+
+    .about-section p {
+      color: #444;
+      line-height: 1.7;
+      font-size: 1rem;
+      margin-bottom: 25px;
+    }
+
+    .mission {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .mission h2 {
+      color: #003366;
+      margin-bottom: 15px;
+    }
+
+    .mission p {
+      color: #555;
+    }
+
+    .team {
+      margin-top: 50px;
+    }
+
+    .team h2 {
+      color: #003366;
+      margin-bottom: 25px;
+    }
+
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .team-member {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 250px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      object-fit: cover;
+    }
+
+    .team-member h3 {
+      color: #ebeff4;
+      margin-bottom: 5px;
+    }
+
+    footer {
+      background-color: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    .login a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
+  padding: 6px 14px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.login a:hover {
+  background: #ffffff;
+  color: #003366;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="pic/logo.jpg.png" alt="J2 Nexus Logo" />
+        <span>J2 Nexus Technologies</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="product.html">Products</a></li>
+          <li><a href="explore.html">Explore</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="login">
+        <a href="login.html">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <h1>About J2 Nexus Technologies</h1>
+    <p>
+      J2 Nexus Technologies is a leading eCommerce company dedicated to providing high-quality tech products and accessories. 
+      Our mission is to make innovation accessible to everyone — whether you're a gadget enthusiast or a business looking for smart tech solutions.
+    </p>
+    <p>
+      We focus on delivering top-notch customer experiences by combining modern design, reliable performance, and exceptional service.
+      Every product we offer goes through strict quality checks to ensure that you get the best value for your purchase.
+    </p>
+
+    <div class="mission">
+      <h2>Our Mission</h2>
+      <p>
+        To bridge the gap between people and technology by offering affordable, innovative, and high-performance products that make everyday life easier and smarter.
+      </p>
+    </div>
+
+    <div class="team">
+      <h2>Meet Our Team</h2>
+      <div class="team-members">
+        <div class="team-member">
+          <img src="pic/team1.jpg" alt="Team Member">
+          <h3>Mark Justin Arban</h3>
+          <p>Founder & CEO</p>
+        </div>
+
+        <div class="team-member">
+          <img src="pic/team2.jpg" alt="Team Member">
+          <h3>Julius Mirano</h3>
+          <p>Operations Manager</p>
+        </div>
+
+        <div class="team-member">
+          <img src="pic/team3.jpg" alt="Team Member">
+          <h3>Arnel</h3>
+          <p>Lead Developer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 J2 Nexus Technologies. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

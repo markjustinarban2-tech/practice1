@@ -166,24 +166,6 @@
       margin-top: auto;
     }
 
-    /* ===== Search Styles ===== */
-    #searchContainer input {
-      padding: 5px 10px;
-      border-radius: 20px;
-      border: none;
-      font-size: 14px;
-    }
-
-    #searchContainer button {
-      padding: 5px 10px;
-      border: none;
-      border-radius: 20px;
-      background: #0055a5;
-      color: #fff;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
     @media (max-width:768px) {
       nav ul { gap: 15px; }
     }
@@ -195,7 +177,7 @@
   <header>
     <div class="container header-container">
       <div class="logo">
-        <img src="logo.jpg.png" alt="J2 Nexus Logo" />
+        <img src="pic/logo.jpg.png" alt="J2 Nexus Logo" />
         <span>J2 Nexus Technologies</span>
       </div>
       <nav>
@@ -208,18 +190,6 @@
         </ul>
       </nav>
       <div class="login">
-        <div id="searchIcon" style="cursor:pointer; font-size:1.3rem;">🔍</div>
-        <div id="searchContainer" style="display:none; align-items:center; gap:5px;">
-          <input type="text" id="searchInput" placeholder="Search products..." />
-          <button id="searchBtn">Search</button>
-        </div>
-
-        <div class="cart" onclick="window.location.href='cart.html'" 
-             style="position:relative; cursor:pointer; font-size:1.3rem;">
-          🛒
-          <div id="cartCount" style="position:absolute; top:-8px; right:-8px; background:red; color:#fff; width:18px; height:18px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:12px;">0</div>
-        </div>
-
         <a href="login.html">Sign In</a>
       </div>
     </div>
@@ -257,39 +227,20 @@
   <!-- ===== Firebase & Scripts ===== -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
     const firebaseConfig = {
-  apiKey: "AIzaSyAFPZliUDalJT7jEfCNoEOYU4J01itGS7s",
-  authDomain: "practice1-81aa6.firebaseapp.com",
-  projectId: "practice1-81aa6",
-  storageBucket: "practice1-81aa6.firebasestorage.app",
-  messagingSenderId: "751925328045",
-  appId: "1:751925328045:web:6fd77bf003197170916e24",
-  measurementId: "G-79ND35V0CS"
-};
+      apiKey: "AIzaSyAFPZliUDalJT7jEfCNoEOYU4J01itGS7s",
+      authDomain: "practice1-81aa6.firebaseapp.com",
+      projectId: "practice1-81aa6",
+      storageBucket: "practice1-81aa6.firebasestorage.app",
+      messagingSenderId: "751925328045",
+      appId: "1:751925328045:web:6fd77bf003197170916e24",
+      measurementId: "G-79ND35V0CS"
+    };
+
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-
-    // Load cart count
-    async function loadCartCount() {
-      const snapshot = await getDocs(collection(db, "cart"));
-      document.getElementById("cartCount").textContent = snapshot.size;
-    }
-    loadCartCount();
-
-    // Search toggle
-    const searchIcon = document.getElementById('searchIcon');
-    const searchContainer = document.getElementById('searchContainer');
-    searchIcon.addEventListener('click', () => {
-      searchContainer.style.display = searchContainer.style.display==='flex'?'none':'flex';
-      if(searchContainer.style.display==='flex') document.getElementById('searchInput').focus();
-    });
-
-    document.getElementById('searchBtn').addEventListener('click', () => {
-      const query = document.getElementById('searchInput').value.trim();
-      if(query) window.location.href=`product.html?search=${encodeURIComponent(query)}`;
-    });
 
     // Contact form submission
     document.getElementById("contactForm").addEventListener("submit", async (e) => {
